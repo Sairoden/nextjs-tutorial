@@ -1,5 +1,6 @@
 // NEXT
 import Link from "next/link";
+import Image from "next/image";
 
 const url = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
 
@@ -21,8 +22,15 @@ export default async function SingleDrinkPage({ params }) {
         Back to drinks
       </Link>
 
-      <h1>{title}</h1>
-      <img src={img} alt={title} />
+      <Image
+        width={300}
+        height={300}
+        src={img}
+        alt={title}
+        className="w-48 h-48 rounded-lg shadow-lg mb-4"
+        priority
+      />
+      <h1 className="text-4xl mb-8">{title}</h1>
     </div>
   );
 }
