@@ -4,6 +4,9 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+// LIBRARIES
+import { z } from "zod";
+
 // UTILS
 import prisma from "./db";
 
@@ -17,8 +20,13 @@ export const getAllTasks = async () => {
 
 export const createTaskCustom = async (prevState, formData) => {
   const content = formData.get("content");
+  const Task = z.object({
+    content: z.string().min(5),
+  });
 
   try {
+    Task.parse({ content });
+
     await prisma.task.create({
       data: {
         content,
@@ -26,9 +34,10 @@ export const createTaskCustom = async (prevState, formData) => {
     });
 
     revalidatePath("/tasks");
-    return { message: "success!!!" };
+    return { message: "success" };
   } catch (err) {
-    return { message: "error..." };
+    console.log(err);
+    return { message: "error" };
   }
 };
 

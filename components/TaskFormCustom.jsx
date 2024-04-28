@@ -1,5 +1,11 @@
 "use client";
 
+// REACT
+import { useEffect } from "react";
+
+// STYLES
+import { toast } from "react-hot-toast";
+
 // UTILS
 import { createTaskCustom } from "@/utils/actions";
 import { useFormStatus, useFormState } from "react-dom";
@@ -24,6 +30,11 @@ const initialState = {
 
 export default function TaskFormCustom() {
   const [state, formAction] = useFormState(createTaskCustom, initialState);
+
+  useEffect(() => {
+    if (state.message === "error") return toast.error("There was an error");
+    if (state.message === "success") return toast.success("Task created");
+  }, [state]);
 
   return (
     <form action={formAction}>
