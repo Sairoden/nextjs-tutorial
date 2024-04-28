@@ -1,9 +1,9 @@
 // UTILS
-import { createTask } from "@/utils/actions";
+import { createTaskCustom } from "@/utils/actions";
 
 export default function TaskForm() {
   return (
-    <form action={createTask}>
+    <form action={createTaskCustom}>
       <div className="join w-full">
         <input
           type="text"
