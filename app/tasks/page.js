@@ -1,3 +1,11 @@
-export default function TasksPage() {
-  return <h1>TasksPage</h1>;
+// COMPONENTS
+import { TaskForm, TaskList } from "../../components";
+
+export default async function TasksPage() {
+  return (
+    <div className="max-w-lg">
+      <TaskForm />
+      <TaskList />
+    </div>
+  );
 }

@@ -2,8 +2,6 @@
 import Link from "next/link";
 
 export default function HomePage() {
-  console.log("SERVER COMPONENT!");
-
   return (
     <div>
       <h1 className="text-5xl mb-8 font-bold">Home</h1>
@@ -14,4 +12,4 @@ export default function HomePage() {
   );
 }
 
-// 28
+// 34
